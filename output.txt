@@ -1,0 +1,210 @@
+8T4
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 8T4 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{1+1/m[k:\Q]-\delta}
+8T28
+   ===Data===
+   a(G)=2
+   2 \le b \le 3
+   ==========
+   Can count 8T28 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+8T29
+   ===Data===
+   a(G)=2
+   2 \le b \le 3
+   ==========
+   Can count 8T29 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T209
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T209 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T223
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T223 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T227
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T227 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T243
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T243 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T247
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T247 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T271
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T271 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T280
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T280 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T283
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T283 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T345
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T345 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T388
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T388 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T401
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T401 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T479
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T479 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T480
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T480 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T481
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T481 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T492
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T492 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T505
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T505 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T517
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T517 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T519
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T519 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T527
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T527 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T625
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T625 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T630
+   ===Data===
+   a(G)=4
+   2 \le b \le 3
+   ==========
+   Can count 16T630 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{2+2/m[k:\Q]-\delta}
+16T1555
+   ===Data===
+   a(G)=2
+   2 \le b \le 3
+   ==========
+   Can count 16T1555 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{4+4/m[k:\Q]-\delta}
+16T1566
+   ===Data===
+   a(G)=2
+   2 \le b \le 3
+   ==========
+   Can count 16T1566 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{4+4/m[k:\Q]-\delta}
+16T1609
+   ===Data===
+   a(G)=2
+   2 \le b \le 3
+   ==========
+   Can count 16T1609 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{4+4/m[k:\Q]-\delta}
+16T1700
+   ===Data===
+   a(G)=2
+   2 \le b \le 3
+   ==========
+   Can count 16T1700 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{4+4/m[k:\Q]-\delta}
+16T1702
+   ===Data===
+   a(G)=2
+   2 \le b \le 3
+   ==========
+   Can count 16T1702 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{4+4/m[k:\Q]-\delta}
+16T1728
+   ===Data===
+   a(G)=2
+   2 \le b \le 3
+   ==========
+   Can count 16T1728 wr B extensions if
+   \#\mathcal{F}_{k}(B,X) \ll X^{4+4/m[k:\Q]-\delta}
