@@ -1,0 +1,183 @@
+/*===================================================================
+ind(G,g) takes as input a permutation group G and an element g \in G,
+and outputs the index ind(G,g) = Degree(G) - #{orbits of g}
+===================================================================*/
+ind:=func<G,g|Degree(G) - #CycleDecomposition(g)>;
+
+/*===================================================================
+The MinInd(G) is the minimum index of the nonidentity elements of G.
+The is denoted by a(G) in the paper.
+===================================================================*/
+MinInd:=function(G)
+    aG := Min([ind(G,c[3]) : c in ConjugacyClasses(G) | c[3] ne Id(G)]);
+    return aG;
+end function;
+
+/*===================================================================
+IsConcentrated(G) returns a boolean value to detect if G is concentrated.
+Enabling the optional parameter SubgroupType causes the function to
+return true if and only if G is concentrated in a normal subgroup with that SubgroupType.
+Admissible options for SubgroupType are "proper","abelian","nilpotent", and "solvable".
+===================================================================*/
+IsConcentrated:=function(G:SubgroupType:="proper")
+    aG:=MinInd(G);
+    N:=ncl<G|[c[3] : c in ConjugacyClasses(G) | ind(G,c[3]) eq aG]>;
+    if SubgroupType eq "proper" then
+        return N ne G;
+    elif SubgroupType eq "abelian" then
+        return N ne G and IsAbelian(N);
+    elif SubgroupType eq "nilpotent" then
+        return N ne G and IsNilpotent(N);
+    elif SubgroupType eq "solvable" then
+        return N ne G and IsSolvable(N);
+    end if;
+end function;
+
+/*===================================================================
+IsSemiConcentrated(G) returns a boolean value to detect if G is semi-concentrated.
+Enabling the optional parameter SubgroupType causes the function to
+return true if and only if G is semi-concentrated in normal subgroups with that SubgroupType.
+Admissible options for SubgroupType are "proper","abelian","nilpotent", and "solvable".
+===================================================================*/
+IsSemiConcentrated:=function(G:SubgroupType:="proper")
+    aG:=MinInd(G);
+    MinIndElts := [c[3] : c in ConjugacyClasses(G) | ind(G,c[3]) eq aG];
+    test:=true;
+    for g in MinIndElts do
+        T:=ncl<G|g>;
+        if SubgroupType eq "proper" then
+            test:= test and (T ne G);
+        elif SubgroupType eq "abelian" then
+            test:= test and (T ne G and IsAbelian(T));
+        elif SubgroupType eq "nilpotent" then
+            test:=test and (T ne G and IsNilpotent(T));
+        elif SubgroupType eq "solvable" then
+            test:=test and (T ne G and IsSolvable(T));
+        end if;
+    end for;
+    return test;
+end function;
+
+/*===================================================================
+=====================================================================
+The code below searches for nilpotent groups of degree \le 23 which are
+  (1) not concentratd in an abelian normal subgroup (and so not covered
+      by previous results, in particular [ALOWW25]),
+  (2) semiconcentrated in abelian groups, and
+  (3) satisfy the conditions of Proposition 6.4 over a base field linearly
+      linearly disjoint from \Q(\zeta_d), where d is the least common multiple
+      of the orders of minimum index tame ramification types.
+These facts together imply the existence of an asymptotic for each such
+group, solving Conjecture 1 in these cases.
+=====================================================================
+===================================================================*/
+for n:=6 to 23 do
+for d:=1 to NumberOfTransitiveGroups(n)-2 do
+
+G:=TransitiveGroup(n,d);
+if IsNilpotent(G) and (not IsConcentrated(G:SubgroupType:="abelian")) and (not IsAbelian(G)) and IsSemiConcentrated(G:SubgroupType:="abelian") then
+
+    /*=====================================
+    Tests for semicon in only two subgroups
+    =====================================*/
+    MinIndcc:=[c : c in ConjugacyClasses(G) | ind(G,c[3]) eq MinInd(G)];
+    SemiCon:=[];
+    for tau in MinIndcc do
+        T:=ncl<G|tau[3]>;
+        redundant:=false;
+        newSemiCon:=[];
+        for H in SemiCon do
+            if T subset H then
+                redundant:=true;
+            end if;
+            if (not H subset T) or (H eq T) then
+                Append(~newSemiCon,H);
+            end if;
+        end for;
+        if not redundant then
+            Append(~newSemiCon,T);
+        end if;
+        SemiCon:=newSemiCon;
+    end for;
+if #SemiCon ne 2 then
+    //Proposition 6.4 does not apply, becuase more than two subgroups required.
+else
+
+    /*=====================================
+    Tests for only two distinguished ramification types.
+    If the base field is linearly disjoint to \Q(\zeta_m), then
+    a tame ramification type, or equivalently k-conjugacy class,
+    of order m is a union of EulerPhi(m) conjugacy classes.
+    =====================================*/
+    NumDistinguishedTypes:=0;
+    DistinguishedTypes:=[];
+    for j:=1 to #SemiCon do
+        DistinguishedTypes[j]:=[];
+        for tau in MinIndcc do
+            if not tau[3] in SemiCon[j] then
+                NumDistinguishedTypes:=NumDistinguishedTypes + 1/EulerPhi(tau[1]);
+                Append(~DistinguishedTypes[j],tau);
+            end if;
+        end for;
+    end for;
+
+if not NumDistinguishedTypes eq 2 then
+    //Proposition 6.4 does not apply, because more than two minimum index
+    //ramification types are not contained in the intersection
+    // $\iota_*{\rm RT}_{k,0}^{\rm tame}(T_1) \cap \iota_*{\rm RT}_{k,0}^{\rm tame}(T_1)$.
+else
+
+    /*=====================================
+    Apply two-dimensional shortcut, using Yang's subconvexity bound alpha = 3/8
+    =====================================*/
+    Q1,q1:=quo<G|Centralizer(G,SemiCon[1])>;
+    Q2,q2:=quo<G|Centralizer(G,SemiCon[2])>;
+    obstruction:=(9/64)*EulerPhi(DistinguishedTypes[1][1][1])*EulerPhi(DistinguishedTypes[2][1][1])*ind(Q1,q1(DistinguishedTypes[1][1][3]))*ind(Q2,q2(DistinguishedTypes[2][1][3]));
+if not obstruction lt 1 then
+    //The inequality (6.5) fails, so Proposition 6.4 is inconclusive.
+else
+    /*=====================================
+    Any group that make it here satisfies the conditions of Proposition 6.4,
+    and therefore Conjecture 1 holds for that group. We print the transitive
+    group label.
+    =====================================*/
+    print Sprint(n)*"T"*Sprint(d);
+    //print "   IsNilpotent="*Sprint(IsNilpotent(G));
+
+    /*=====================================
+    Next, we print the data necessary to determine a and the bounds for b.
+    Assuming the base field is linearly disjoint from Q(\zeta_{\exp(G)}), the
+    bounds for b are given in terms of the number of distinuguished ramification types
+    in Theorem 6.1(ii), where Lemma 7.1 implies the twisting map is injective on
+    minimum index tame ramification types.
+    =====================================*/
+    print "   ===Data===";
+    aG:=MinInd(G);
+    print "   a(G)="*Sprint(aG);
+    MinIndcc:=[c:c in ConjugacyClasses(G) | ind(G,c[3]) eq aG];
+    NumMinIndTypes:=0;
+    for c in MinIndcc do
+        NumMinIndTypes:=NumMinIndTypes + 1/EulerPhi(c[1]);
+    end for;
+    print "   "*Sprint(NumMinIndTypes-1)*" \\le b \\le "*Sprint(NumMinIndTypes);
+    print "   ==========";
+
+    /*=====================================
+    Finally, we determine sufficient conditions for a transitive group B
+    to prove Conjectrue 1 for nTd wr B.
+    =====================================*/
+    if PrimeDivisors(n) eq [2] then
+        print "   Can count "*Sprint(n)*"T"*Sprint(d)*" wr B extensions if";
+        MaxLogT:=Max([Round(Log(2,#T)) : T in SemiCon]);
+        print "   \\#\\mathcal{F}_{k}(B,X) \\ll X^{"*Sprint(n/aG-MaxLogT/2)*"+"*Sprint(MaxLogT/2)*"/m[k:\\Q]-\\delta}";
+    end if;
+end if;
+
+end if;
+
+end if;
+end if;
+end for;
+end for;
+
+quit;
